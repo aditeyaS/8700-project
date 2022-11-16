@@ -10,9 +10,15 @@ ENEMY_TANK_NUMBER: Final[int] = 10
 # Initial lives given to the player
 PLAYER_LIVES: Final[int] = 8
 
+# speed of bullet
+BULLET_SPEED: Final[int] = 100
+
+# maximum player lives
+MAXIMUM_PLAYER_LIVES: Final[int] = 10
+
 # status of tanks
-ACTIVE: Final[str] = "active"
-EXPLODE: Final[str] = "explode"
-INACTIVE: Final[int] = "inactive"
+ACTIVE: Final[str] = "ACTIVE"
+EXPLODE: Final[str] = "EXPLODE"
+INACTIVE: Final[int] = "INACTIVE"
 
 DIRECTIONS = ["up", "right", "down", "left"]

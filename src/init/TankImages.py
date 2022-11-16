@@ -1,3 +1,5 @@
+from tkinter import *
+
 import const.app as AppConfig
 
 class TankImages:
@@ -5,28 +7,28 @@ class TankImages:
         tank = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "tank_blue_" + d + ".gif"
-            tank[d] = fileName
+            tank[d] = PhotoImage(file="../pic/" + fileName)
         return tank
 
     def getBlack(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "tank_black_" + d + ".gif"
-            tank[d] = fileName
+            tank[d] = PhotoImage(file="../pic/" + fileName)
         return tank
 
     def getRed(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "tank_red_" + d + ".gif"
-            tank[d] = fileName
+            tank[d] = PhotoImage(file="../pic/" + fileName)
         return tank
 
     def getPlayer(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "tank_player_" + d + ".gif"
-            tank[d] = fileName
+            fileName = "tank_huge_" + d + ".gif"
+            tank[d] = PhotoImage(file="../pic/" + fileName)
         return tank
 
     def getAll(self):
@@ -34,5 +36,5 @@ class TankImages:
         tank_images["blue"] = self.getBlue()
         tank_images["black"] = self.getBlack()
         tank_images["red"] = self.getRed()
-        tank_images["player"] = self.getPlayer()
+        tank_images["huge"] = self.getPlayer()
         return tank_images
