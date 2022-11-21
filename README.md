@@ -17,5 +17,5 @@ Move to source folder
 ```
 Run the game
 ```bash
-  python3 tank_war.py
+  python3 main.py
 ```
