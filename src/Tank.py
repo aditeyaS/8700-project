@@ -23,7 +23,7 @@ class Tank():
         canvas = can
         self.color = color
         self.dir = direction
-        self.speed = 5
+        self.speed = AppConfig.TANK_SPEED
         self.drawable = canvas.create_image(x, y,
                                          image=tanks_img[self.color][self.dir],
                                          anchor="nw")

@@ -4,17 +4,22 @@ from typing import Final
 WINDOW_WIDTH: Final[int] = 600
 WINDOW_HEIGHT: Final[int] = 600
 
+# status of game (the page of the game)
+STORY: Final[str] = "STORY"
+PLAYGROUND: Final[str] = "PLAYGROUND"
+LEADERBOARD: Final[str] = "LEADERBOARD"
+
 # Number of enemy tanks
 ENEMY_TANK_NUMBER: Final[int] = 10
-
-# Initial lives given to the player
-PLAYER_LIVES: Final[int] = 8
 
 # speed of bullet
 BULLET_SPEED: Final[int] = 100
 
+# speed of tank
+TANK_SPEED: Final[int] = 5
+
 # maximum player lives
-MAXIMUM_PLAYER_LIVES: Final[int] = 10
+MAXIMUM_PLAYER_LIVES: Final[int] = 1
 
 # status of tanks
 ACTIVE: Final[str] = "ACTIVE"
