@@ -13,44 +13,65 @@ window.resizable(False, False)
 
 running = True
 game_state = AppConfig.STORY
+entered_username = ""
 
-def on_start_click():
+def on_start_click(username):
     global game_state
     game_state = AppConfig.PLAYGROUND
+    global entered_username
+    entered_username = username
 
 def on_restart_click():
     global game_state
     game_state = AppConfig.STORY
 
 def on_exit_click():
-    window.quit()
+    global game_state
+    game_state = "EXIT"
 
 while running:
-    print(game_state)
     if game_state == AppConfig.STORY:
         story_frame = Frame(window, height=800, width=800, bg="#000000")
-        story_frame.pack(expand=True, fill=BOTH)
-        story_frame.pack_propagate(0)
+        story_frame.place(x=0, y=0)
+        # story_frame.place(x)
+        story_frame.grid_propagate(0)
+        # story_frame.pack(expand=True, fill=BOTH)
+        # story_frame.pack_propagate(0)
 
+
+        game_title_label = Label(
+            story_frame,
+            text="Haloween Hunter",
+            background="#000000",
+            foreground="#ffffff",
+            anchor=CENTER,
+            font=('Lithos Pro Regular', 20)
+        )
+        game_title_label.place(x=300, y=10)
+
+        textAbout = "It's haloween and the good spirits are coming down to give blessings to their loved ones. "\
+            + "But the evis spirits are stopping their way. Your mission is to destroy all the evil spirits"
+        game_description = Label(story_frame, anchor=CENTER, text=textAbout, background="#000000", foreground="#ffffff",padx=20, pady=20)
+        game_description.place(y=50)
         
+        hibernation_mode_title = Label(story_frame, anchor=CENTER, text="Hibernation Mode", background="#000000", foreground="#ffffff")
+        hibernation_mode_title.place(x=700/2, y=100)
 
-        print(story_frame.winfo_height)
-
-        welcome_label = Label(story_frame, anchor=CENTER, text="Haloween Hunter", background="#000000", foreground="#ffffff")
-        welcome_label.grid(row=1, sticky=E+W, columnspan=1)
-
-        textAbout = "Welcome to Haloween unter.\n Here you have to duuwduwdu"
-        welcome_label = Label(story_frame, anchor=CENTER, text=textAbout, background="#000000", foreground="#ffffff")
-        welcome_label.grid(row=2)
-        
-        hibernation_mode = Label(story_frame, anchor=CENTER, text="Hibernation Mode", background="#000000", foreground="#ffffff")
-        hibernation_mode.grid(row=3)
+        hibernation_text = "It's haloween and the good spirits are coming down to give blessings to their loved ones. "\
+            + "But the evis spirits are stopping their way. Your mission is to destroy all the evil spirits"
+        game_description = Label(story_frame, anchor=CENTER, text=hibernation_text, background="#000000", foreground="#ffffff",padx=20, pady=20)
+        game_description.place(y=50)
 
         # story_canvas = Canvas(window, width=AppConfig.WINDOW_WIDTH, height=AppConfig.WINDOW_HEIGHT)
-        start_button = Button(story_frame, text="Start", command=on_start_click)
+
+        username_input = Entry(story_frame)
+        username_input.insert(0, "username")
+        username_input.place(x=270, y = 700)
+
+        start_button = Button(story_frame, text="Start", command=lambda: on_start_click(username_input.get()))
 
         # story_canvas.grid(row=1, column=0)
-        start_button.grid(row=4)
+        start_button.place(x=350, y = 750)
         
         story_running = True
         while story_running == True:
@@ -60,16 +81,19 @@ while running:
             time.sleep(0.1)
 
         if (story_running == False):
-            story_frame.pack_forget()
+            story_frame.grid_forget()
             # start_button.grid_forget()
             continue
         # story_frame.mainloop()
 
     elif game_state == AppConfig.PLAYGROUND:
-        frame = Frame(window, width=800, height=800)
+        frame = Frame(window, width=800, height=800, background="#000000")
         frame.place(x=0, y=0)
+        frame.grid_propagate(0)
+
         pg_canvas = Canvas(frame, width=AppConfig.WINDOW_WIDTH, height=AppConfig.WINDOW_HEIGHT)
-        pg_canvas.grid(row=1, column=0, columnspan=2)
+        pg_canvas.place(x=100, y=100)
+        # pg_canvas.grid(row=1, column=0, columnspan=2)
         bg_image = PhotoImage(file="../pic/bg.gif")
         pg_canvas.create_image(0, 0, image=bg_image, anchor="nw")
 
@@ -92,25 +116,31 @@ while running:
         pg_canvas.bind_all('<Left>', player_tank.set_dir_left)
         pg_canvas.bind_all('<space>', shoot)
         
-        username_label = Label(frame, text="aditeys", bd=1, relief=SUNKEN, pady=5)
-        username_label.grid(row=0, column=0, sticky=W+E, columnspan=2)
+        username_label = Label(frame, text=entered_username)
+        username_label.place(x=350, y = 20)
+        # username_label.grid(row=0, column=0, sticky=W+E, columnspan=2)
 
         current_lives_text = "Lives: " + str(AppConfig.MAXIMUM_PLAYER_LIVES) + "/" + str(AppConfig.MAXIMUM_PLAYER_LIVES)
         lives_label = Label(frame, text=current_lives_text, relief=SUNKEN, anchor=W)
-        lives_label.grid(row=2, column=0, sticky=W+E)
+        # lives_label.grid(row=2, column=0, sticky=W+E)
+        lives_label.place(x=10, y=750)
 
         score_label = Label(frame, text="Score: " + str(0), relief=SUNKEN, anchor=E)
-        score_label.grid(row=2, column=1, sticky=W+E)
-        
+        # score_label.grid(row=2, column=1, sticky=W+E)
+        score_label.place(x=700, y=750)
+
         def update_status (current_lives, current_score):
             current_lives_text = "Lives: " + str(current_lives) + "/" + str(AppConfig.MAXIMUM_PLAYER_LIVES)
             global lives_label
             lives_label = Label(frame, text=current_lives_text, relief=SUNKEN, anchor=W)
-            lives_label.grid(row=2, column=0, sticky=W+E)
+            # lives_label.grid(row=2, column=0, sticky=W+E)
+            lives_label.place(x=10, y=750)
 
             global score_label
             score_label = Label(frame, text="Score: " + str(current_score), relief=SUNKEN, anchor=E)
-            score_label.grid(row=2, column=1, sticky=W+E)
+            # score_label.grid(row=2, column=1, sticky=W+E)
+            score_label.place(x=700, y=750)
+
 
         # update_status(AppConfig.MAXIMUM_PLAYER_LIVES, 0)
 
@@ -201,33 +231,43 @@ while running:
         
         pg_canvas.mainloop()
     elif (game_state == AppConfig.LEADERBOARD):
+        # story_frame = Frame(window, height=800, width=800, bg="#000000")
+        # story_frame.place(x=0, y=0)
+        # story_frame.place(x)
+        # story_frame.grid_propagate(0)
         leaderboard_frame = Frame(window, height=800, width=800, bg="red")
-        leaderboard_frame.pack()
-        leaderboard_frame.pack_propagate(0)
+        leaderboard_frame.place(x=0, y=0)
+        leaderboard_frame.grid_propagate(0)
+        # leaderboard_frame.pack_propagate(0)
     
         # leaderboard_canvas = Canvas(window, width=AppConfig.WINDOW_WIDTH, height=AppConfig.WINDOW_HEIGHT)
         # leaderboard_canvas.grid(row=1, column=0, columnspan=2)
 
-        restart_button = Button(leaderboard_frame, text="Restart", command=on_restart_click)
-        restart_button.grid(row=1, column=1)
+        restart_button = Button(leaderboard_frame, text="Restart", command=on_restart_click, width=10)
+        restart_button.place(x=200, y=750)
         
-        exit_button = Button(leaderboard_frame, text="Exit", command=window)
-        exit_button.grid(row=1, column=2)
+        exit_button = Button(leaderboard_frame, text="Exit", command=on_exit_click, width=10)
+        exit_button.place(x=420, y=750)
         
         l_runing = True
         while l_runing == True:
             if (game_state != AppConfig.LEADERBOARD):
-                l_runing = False                
+                l_runing = False             
             time.sleep(0.1)
             leaderboard_frame.update()
 
+
+        
         if (l_runing == False):
             # print("HERE " + game_state)
-            leaderboard_frame.pack_forget()
+            leaderboard_frame.grid_forget()
             # restart_button.grid_remove()
             # exit_button.grid_remove()
             continue
         # leaderboard_frame.mainloop()
+    elif (game_state == "EXIT"):
+        window.quit()
+        window.destroy()
 
     window.update()
 window.mainloop()

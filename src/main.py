@@ -6,9 +6,6 @@ import const.app as AppConfig
 from utils.delete_inactive import delete_inactive
 from utils.collide import collide
 
-from playground_screen import playground_screen
-from story_screen import story_screen
-
 window = Tk()
 window.title("Haloween Hunter")
 
@@ -17,15 +14,15 @@ running = True
 STORY = "STORY"
 PLAYGROUND = "PLAYGROUND"
 
-game_state = STORY
-while running:
-    if game_state == STORY:
-        if (story_screen(window)):
-            game_state = PLAYGROUND
-    elif game_state == PLAYGROUND:
-        playground_screen(window)
-    print(game_state)
-window.mainloop()
+# game_state = STORY
+# while running:
+#     if game_state == STORY:
+#         if (story_screen(window)):
+#             game_state = PLAYGROUND
+#     elif game_state == PLAYGROUND:
+#         playground_screen(window)
+#     print(game_state)
+# window.mainloop()
 # win.attributes('-fullscreen', True)
 
 # canvas = Canvas(window, width=AppConfig.WINDOW_WIDTH, height=AppConfig.WINDOW_HEIGHT)
