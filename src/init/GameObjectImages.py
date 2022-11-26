@@ -1,8 +1,8 @@
-from tkinter import *
+from tkinter import PhotoImage
 
 import const.app_config as AppConfig
 
-class TankImages:
+class GameObjectImages:
     def getBlue(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
@@ -32,9 +32,9 @@ class TankImages:
         return tank
 
     def getAll(self):
-        tank_images = {}
-        tank_images["blue"] = self.getBlue()
-        tank_images["black"] = self.getBlack()
-        tank_images["red"] = self.getRed()
-        tank_images["huge"] = self.getPlayer()
-        return tank_images
+        game_object_images = {}
+        game_object_images["blue"] = self.getBlue()
+        game_object_images["black"] = self.getBlack()
+        game_object_images["red"] = self.getRed()
+        game_object_images["huge"] = self.getPlayer()
+        return game_object_images

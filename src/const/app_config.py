@@ -14,6 +14,7 @@ PLAYGROUND_WIDTH: Final[int] = 600
 STORY: Final[str] = "STORY"
 PLAYGROUND: Final[str] = "PLAYGROUND"
 LEADERBOARD: Final[str] = "LEADERBOARD"
+EXIT: Final[str] = "EXIT"
 
 # Number of enemy tanks
 ENEMY_TANK_NUMBER: Final[int] = 10

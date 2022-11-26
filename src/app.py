@@ -100,14 +100,14 @@ while running:
         bg_image = PhotoImage(file="../pic/bg.gif")
         pg_canvas.create_image(0, 0, image=bg_image, anchor="nw")
 
-        from generate_enemy_tanks import generate_enemy_tanks
-        from Tank import Tank
+        from generate_evil_spirits import generate_evil_spirits
+        from GameObject import GameObject
 
-        enemy_tanks = generate_enemy_tanks(pg_canvas)
+        enemy_tanks = generate_evil_spirits(pg_canvas)
         enemy_bullets = []
 
         # Tank and bullet list for player's tanks
-        player_tank = Tank(10, 10, "down", "huge", pg_canvas)
+        player_tank = GameObject(10, 10, "down", "huge", pg_canvas)
         player_bullets = []
         def shoot(event):
             player_bullets.append(player_tank.create_bullet())

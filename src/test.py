@@ -32,7 +32,7 @@ def on_restart_click():
 
 def on_exit_click():
     global game_state
-    game_state = "EXIT"
+    game_state = AppConfig.EXIT
 
 
 running = True
@@ -107,14 +107,14 @@ while running:
         score_label = CustomLabel(status_row, "Score: 0", Colors.GREEN)
         score_label.grid(row=0, column=1, sticky=W+E)
         
-        from generate_enemy_tanks import generate_enemy_tanks
-        from Tank import Tank
+        from generate_evil_spirits import generate_evil_spirits
+        from GameObject import GameObject
 
-        evil_spirits = generate_enemy_tanks(pg_canvas)
+        evil_spirits = generate_evil_spirits(pg_canvas)
         evil_spirit_bullets = []
 
-        # Tank and bullet list for player's tanks
-        pumpkin = Tank(10, 10, "down", "huge", pg_canvas)
+        # Pumpkin object and bullet
+        pumpkin = GameObject(10, 10, "down", "huge", pg_canvas)
         pumpkin_bullets = []
         def shoot(event):
             pumpkin_bullets.append(pumpkin.create_bullet())
@@ -142,10 +142,10 @@ while running:
         pg_running = True
 
         while pg_running:
-            # update position and images of player's tank
+            # update position and images of pumpkin
             pumpkin.update_pos_img()
 
-            # update position and images of enemy tanks
+            # update position and images of evis spirits
             for t in evil_spirits:
                 t.update_pos_img()
                 if count % 20 == 0:
@@ -172,7 +172,7 @@ while running:
             evil_spirit_bullets = delete_inactive(evil_spirit_bullets, pg_canvas)
             pumpkin_bullets = delete_inactive(pumpkin_bullets, pg_canvas)
             
-            # delete tanks that finished exploding (INACTIVE)
+            # delete evil spirits that finished exploding (INACTIVE)
             evil_spirits = delete_inactive(evil_spirits, pg_canvas)
 
             # calculation of lives and score
@@ -273,7 +273,7 @@ while running:
         if (l_runing == False):
             leaderboard_frame.grid_forget()
             continue
-    elif (game_state == "EXIT"):
+    elif (game_state == AppConfig.EXIT):
         window.quit()
         window.destroy()
 
