@@ -6,29 +6,29 @@ class BulletImages:
     def getBlue(self):
         bullet = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "bullet_blue_" + d + ".gif"
-            bullet[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "bullet_" + d + ".gif"
+            bullet[d] = PhotoImage(file="../pic/devil/" + fileName)
         return bullet
 
     def getBlack(self):
         bullet = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "bullet_black_" + d + ".gif"
-            bullet[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "bullet_" + d + ".gif"
+            bullet[d] = PhotoImage(file="../pic/devil/" + fileName)
         return bullet
 
     def getRed(self):
         bullet = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "bullet_red_" + d + ".gif"
-            bullet[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "bullet_" + d + ".gif"
+            bullet[d] = PhotoImage(file="../pic/devil/" + fileName)
         return bullet
 
     def getPlayer(self):
         bullet = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "bullet_huge_" + d + ".gif"
-            bullet[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "bullet_" + d + ".gif"
+            bullet[d] = PhotoImage(file="../pic/player/" + fileName)
         return bullet
 
     def getAll(self):

@@ -6,29 +6,29 @@ class TankImages:
     def getBlue(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "tank_blue_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "blue_" + d + ".gif"
+            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
         return tank
 
     def getBlack(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "tank_black_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "black_" + d + ".gif"
+            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
         return tank
 
     def getRed(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "tank_red_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "red_" + d + ".gif"
+            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
         return tank
 
     def getPlayer(self):
         tank = {}
         for d in AppConfig.DIRECTIONS:
-            fileName = "tank_huge_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/" + fileName)
+            fileName = "pumpkin_" + d + ".gif"
+            tank[d] = PhotoImage(file="../pic/player/" + fileName)
         return tank
 
     def getAll(self):
