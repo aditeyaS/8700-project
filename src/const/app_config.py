@@ -33,3 +33,8 @@ EXPLODE: Final[str] = "EXPLODE"
 INACTIVE: Final[int] = "INACTIVE"
 
 DIRECTIONS = ["up", "right", "down", "left"]
+
+BTN_START: Final[str] = "START"
+BTN_RESUME: Final[str] = "RESUME"
+BTN_EXIT: Final[str] = "EXIT"
+

@@ -6,13 +6,14 @@ import const.app_config as AppConfig
 from utils.delete_inactive import delete_inactive
 from utils.collide import collide
 
-window = Tk()
-window.title(f"{AppConfig.GAME_NAME}")
-window.geometry(f"{AppConfig.WINDOW_WIDTH}x{AppConfig.WINDOW_HEIGHT}")
-window.resizable(False, False)
+from widgets.MainApp import MainApp
+from widgets.PageFrame import PageFrame
+from widgets.TitleLabel import TitleLabel
+from widgets.CustomLabel import CustomLabel
+from widgets.CustomFrame import CustomFrame
+from widgets.CustomButtom import CustomButton
 
-window.grid_columnconfigure(0, weight=1)
-window.grid_rowconfigure(0, weight=1)
+window = MainApp()
 
 game_state = AppConfig.STORY
 
@@ -38,84 +39,39 @@ running = True
 
 while running:
     if game_state == AppConfig.STORY:
-        story_frame = Frame(window, height=800, width=800, bg="#000000")
-        story_frame.grid(row=0, column=0, sticky="nsew")
-        story_frame.grid_columnconfigure(0, weight=1)
+        story_frame = PageFrame(window)
 
-        game_title_label = Label(
-            story_frame,
-            text="Haloween Hunter",
-            background="#000000",
-            foreground="#ffffff",
-            font=('Lithos Pro Regular', 20),
-            pady=20
-        )
-        game_title_label.grid(row=0, column=0)
+        game_title_label = TitleLabel(story_frame, AppConfig.GAME_NAME)
 
         description_frame = Frame(story_frame, padx=20, pady=20, bg="#000000")
         description_frame.grid(row=1, column=0)
 
         line_1_text = "It's haloween and the good spirits are coming down to"
-        line1 = Label(
-            description_frame,
-            text=line_1_text,
-            background="#000000", 
-            foreground="#ffffff",
-            padx=20,
-            pady=20,
-        )
+        line1 = CustomLabel(description_frame, line_1_text)
         line1.grid(row=0, column=0)
 
         line_2_text = "give blessings to their loved ones. But the evil spirits"
-        line2 = Label(
-            description_frame,
-            text=line_2_text,
-            background="#000000", 
-            foreground="#ffffff",
-            padx=20,
-            pady=20,
-        )
+        line2 = CustomLabel(description_frame, line_2_text)
         line2.grid(row=1, column=0)
 
         line_3_text = "are stopping their way."
-        line3 = Label(
-            description_frame,
-            text=line_3_text,
-            background="#000000", 
-            foreground="#ffffff",
-            padx=20,
-            pady=20,
-        )
+        line3 = CustomLabel(description_frame, line_3_text)
         line3.grid(row=2, column=0)
 
         line_4_text = "Your mission is to destroy all the evil spirits"
-        line4 = Label(
-            description_frame,
-            text=line_4_text,
-            background="#000000", 
-            foreground="#ffffff",
-            padx=20,
-            pady=30,
-        )
+        line4 = CustomLabel(description_frame, line_4_text)
         line4.grid(row=3, column=0)
 
         line_5_text = "Best of Luck!"
-        line5 = Label(
-            description_frame,
-            text=line_5_text,
-            background="#000000", 
-            foreground="#ffffff",
-            padx=20,
-            pady=30,
-        )
+        line5 = CustomLabel(description_frame, line_5_text)
         line5.grid(row=4, column=0)
 
-
-        username_input = Entry(story_frame)
+        username_input = Entry(story_frame, width=40, borderwidth=10, relief=FLAT)
         username_input.insert(0, "username")
         username_input.grid(row=2, column=0, padx=20, pady=20)
 
-        start_button = Button(story_frame, text="Start", command=lambda: on_start_click(username_input.get()))
+        start_button = CustomButton(story_frame, AppConfig.BTN_START, lambda: on_start_click(username_input.get()))
+        # Button(story_frame, text="Start", command=lambda: on_start_click(username_input.get()))
 
         start_button.grid(row=3, column=0, padx=20, pady=20)
         
@@ -271,24 +227,56 @@ while running:
             continue
         
         pg_canvas.mainloop()
-    elif (game_state == AppConfig.LEADERBOARD):
-        # story_frame = Frame(window, height=800, width=800, bg="#000000")
-        # story_frame.place(x=0, y=0)
-        # story_frame.place(x)
-        # story_frame.grid_propagate(0)
-        leaderboard_frame = Frame(window, height=800, width=800, bg="red")
-        leaderboard_frame.place(x=0, y=0)
-        leaderboard_frame.grid_propagate(0)
-        # leaderboard_frame.pack_propagate(0)
     
-        # leaderboard_canvas = Canvas(window, width=AppConfig.WINDOW_WIDTH, height=AppConfig.WINDOW_HEIGHT)
-        # leaderboard_canvas.grid(row=1, column=0, columnspan=2)
+    elif (game_state == AppConfig.LEADERBOARD):
+        leaderboard_frame = PageFrame(window)
 
-        restart_button = Button(leaderboard_frame, text="Restart", command=on_restart_click, width=10)
-        restart_button.place(x=200, y=750)
+        leader_board_title = TitleLabel(leaderboard_frame, "Leader Board")
+
+        table_frame = CustomFrame(leaderboard_frame)
+        table_frame.grid(row=1, column=0, sticky="nsew")
+        table_frame.grid_columnconfigure(0, weight=1)
+        table_frame.grid_columnconfigure(1, weight=1)
+
+        c00 = CustomLabel(table_frame, text="Username")
+        c00.grid(row=0, column=0)
+        c01 = CustomLabel(table_frame, text="High Score")
+        c01.grid(row=0, column=1)
+
+        c10 = CustomLabel(table_frame, text="aditeys")
+        c10.grid(row=1, column=0)
+        c11 = CustomLabel(table_frame, text="10")
+        c11.grid(row=1, column=1)
+
+        c20 = CustomLabel(table_frame, text="aditeys")
+        c20.grid(row=2, column=0)
+        c21 = CustomLabel(table_frame, text="10")
+        c21.grid(row=2, column=1)
+
+        c30 = CustomLabel(table_frame, text="aditeys")
+        c30.grid(row=3, column=0)
+        c31 = CustomLabel(table_frame, text="10")
+        c31.grid(row=3, column=1)
+
+        c40 = CustomLabel(table_frame, text="aditeys")
+        c40.grid(row=4, column=0)
+        c41 = CustomLabel(table_frame, text="10")
+        c41.grid(row=4, column=1)
+
+        c50 = CustomLabel(table_frame, text="aditeys")
+        c50.grid(row=5, column=0)
+        c51 = CustomLabel(table_frame, text="10")
+        c51.grid(row=5, column=1)
         
-        exit_button = Button(leaderboard_frame, text="Exit", command=on_exit_click, width=10)
-        exit_button.place(x=420, y=750)
+
+        action_row = Frame(leaderboard_frame)
+        action_row.grid(row=2, column=0)
+
+        restart_button = CustomButton(action_row, AppConfig.BTN_RESUME, command=on_restart_click)
+        restart_button.grid(row=0, column=0)
+        
+        exit_button = CustomButton(action_row, AppConfig.BTN_EXIT, command=on_exit_click)
+        exit_button.grid(row=0, column=1)
         
         l_runing = True
         while l_runing == True:
