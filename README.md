@@ -1,8 +1,13 @@
 
 # Halloween Rescue
 
-Final project of Software Design (CPSC 8700)
+![Halloween Rescue](https://github.com/aditeyaS/8700-project/blob/main/img/icon.gif)
 
+Halloween Rescue is a python game which is the final project for the course Software Design (CPSC 8700)
+
+## Tech Stack
+**Languages:** Python
+**Python Libraries:** Tkinter
 
 ## Installation
 
@@ -19,3 +24,7 @@ Run the game
 ```bash
   python3 main.py
 ```
+
+## Authors
+
+- [Aditeya Srivastava](https://www.github.com/aditeyaS)
