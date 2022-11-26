@@ -1,6 +1,6 @@
 from tkinter import *
 
-import const.app as AppConfig
+import const.app_config as AppConfig
 
 class BulletImages:
     def getBlue(self):

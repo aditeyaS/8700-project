@@ -1,8 +1,14 @@
 from typing import Final
 
+GAME_NAME: Final[str] = "Haloween Hunter"
+
 # Width and height of the window
-WINDOW_WIDTH: Final[int] = 600
-WINDOW_HEIGHT: Final[int] = 600
+WINDOW_WIDTH: Final[int] = 800
+WINDOW_HEIGHT: Final[int] = 800
+
+# Width and height of the window
+PLAYGROUND_HEIGHT: Final[int] = 600
+PLAYGROUND_WIDTH: Final[int] = 600
 
 # status of game (the page of the game)
 STORY: Final[str] = "STORY"

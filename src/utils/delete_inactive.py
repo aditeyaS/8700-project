@@ -1,4 +1,4 @@
-import const.app as AppConfig
+import const.app_config as AppConfig
 
 def delete_inactive(object_list, canvas):
     new_object_list = []

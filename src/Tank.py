@@ -1,6 +1,6 @@
 import random
 
-import const.app as AppConfig
+import const.app_config as AppConfig
 import const.player as PlayerConfig
 import const.enemy as EnemyConfig
 
@@ -59,9 +59,9 @@ class Tank():
                 self.dir = random.choice(["down", "up", "right"])
             elif t_pos[1] < 0:
                 self.dir = random.choice(["down", "left", "right"])
-            elif t_pos[2] > AppConfig.WINDOW_WIDTH:
+            elif t_pos[2] > AppConfig.PLAYGROUND_WIDTH:
                 self.dir = random.choice(["down", "up", "left"])
-            elif t_pos[3] > AppConfig.WINDOW_HEIGHT:
+            elif t_pos[3] > AppConfig.PLAYGROUND_HEIGHT:
                 self.dir = random.choice(["left", "up", "right"])
 
             canvas.itemconfig(self.drawable, image=tanks_img[self.color][self.dir])

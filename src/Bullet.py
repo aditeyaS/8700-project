@@ -1,4 +1,4 @@
-import const.app as AppConfig
+import const.app_config as AppConfig
 
 from init.BulletImages import BulletImages
 
@@ -29,7 +29,7 @@ class Bullet():
 
     def update_state(self):
         bullet_pos = self.get_pos()
-        if bullet_pos[0] < 0 or bullet_pos[1] < 0 or bullet_pos[2] > AppConfig.WINDOW_WIDTH or bullet_pos[3] > AppConfig.WINDOW_HEIGHT:
+        if bullet_pos[0] < 0 or bullet_pos[1] < 0 or bullet_pos[2] > AppConfig.PLAYGROUND_WIDTH or bullet_pos[3] > AppConfig.PLAYGROUND_HEIGHT:
             self.state = AppConfig.INACTIVE
 
     def get_pos(self):
