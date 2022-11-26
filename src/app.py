@@ -107,7 +107,7 @@ while running:
         enemy_bullets = []
 
         # Tank and bullet list for player's tanks
-        player_tank = GameObject(10, 10, "down", "huge", pg_canvas)
+        player_tank = GameObject(10, 10, "down", "pumpkin", pg_canvas)
         player_bullets = []
         def shoot(event):
             player_bullets.append(player_tank.create_bullet())
@@ -193,7 +193,7 @@ while running:
             enemy_tanks = delete_inactive(enemy_tanks, pg_canvas)
 
             # calculation of lives and score
-            score = (AppConfig.ENEMY_TANK_NUMBER - len(enemy_tanks))*10
+            score = (AppConfig.EVIL_SPIRIT_NUMBER - len(enemy_tanks))*10
 
             if player_tank.state == AppConfig.INACTIVE:
                 player_lives -= 1

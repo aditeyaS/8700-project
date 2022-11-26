@@ -12,7 +12,7 @@ from Bullet import Bullet
 # all the explosion images
 explosion = ExplosionImages().getExplosionImages()
 
-# all tank images
+# all game object images
 game_objects = GameObjectImages().getAll()
 
 class GameObject():
@@ -22,19 +22,19 @@ class GameObject():
         canvas = can
         self.color = color
         self.dir = direction
-        self.speed = AppConfig.TANK_SPEED
+        self.speed = AppConfig.GAME_OBJECT_SPEED
         self.drawable = canvas.create_image(x, y,
                                          image=game_objects[self.color][self.dir],
                                          anchor="nw")
         self.state = AppConfig.ACTIVE
         self.e_count = 0
  
-        if self.color == "huge":
-            self.width = PlayerConfig.PLAYER_TANK_WIDTH
-            self.height = PlayerConfig.PLAYER_TANK_HEIGHT
+        if self.color == "pumpkin":
+            self.width = PlayerConfig.PUMPKIN_WIDTH
+            self.height = PlayerConfig.PUMPKIN_HEIGHT
         else:
-            self.width = EnemyConfig.ENEMY_TANK_WIDTH
-            self.height = EnemyConfig.ENEMY_TANK_HEIGHT
+            self.width = EnemyConfig.EVIL_SPIRIT_WIDTH
+            self.height = EnemyConfig.EVIL_SPIRIT_HEIGHT
 
     # Update the appearance and state of the object
     def update_pos_img(self):
@@ -76,8 +76,8 @@ class GameObject():
                 canvas.move(self.drawable, -self.speed, 0)
 
     def create_bullet(self):
-        if self.color == "huge":
-            b_w = PlayerConfig.PLAYER_BULLET_WIDTH
+        if self.color == "pumpkin":
+            b_w = PlayerConfig.PUMPKIN_BULLET_WIDTH
 
         else:
             b_w = EnemyConfig.ENEMY_BULLET_WIDTH

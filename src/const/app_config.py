@@ -1,6 +1,6 @@
 from typing import Final
 
-GAME_NAME: Final[str] = "Haloween Hunter"
+GAME_NAME: Final[str] = "Halloween Hunter"
 
 # Width and height of the window
 WINDOW_WIDTH: Final[int] = 800
@@ -16,19 +16,19 @@ PLAYGROUND: Final[str] = "PLAYGROUND"
 LEADERBOARD: Final[str] = "LEADERBOARD"
 EXIT: Final[str] = "EXIT"
 
-# Number of enemy tanks
-ENEMY_TANK_NUMBER: Final[int] = 10
+# Number of evil spirits
+EVIL_SPIRIT_NUMBER: Final[int] = 10
 
 # speed of bullet
 BULLET_SPEED: Final[int] = 100
 
-# speed of tank
-TANK_SPEED: Final[int] = 5
+# speed of objects
+GAME_OBJECT_SPEED: Final[int] = 5
 
 # maximum player lives
 MAXIMUM_PLAYER_LIVES: Final[int] = 1
 
-# status of tanks
+# status of objects
 ACTIVE: Final[str] = "ACTIVE"
 EXPLODE: Final[str] = "EXPLODE"
 INACTIVE: Final[int] = "INACTIVE"

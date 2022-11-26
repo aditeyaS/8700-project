@@ -114,7 +114,7 @@ while running:
         evil_spirit_bullets = []
 
         # Pumpkin object and bullet
-        pumpkin = GameObject(10, 10, "down", "huge", pg_canvas)
+        pumpkin = GameObject(10, 10, "down", "pumpkin", pg_canvas)
         pumpkin_bullets = []
         def shoot(event):
             pumpkin_bullets.append(pumpkin.create_bullet())
@@ -176,7 +176,7 @@ while running:
             evil_spirits = delete_inactive(evil_spirits, pg_canvas)
 
             # calculation of lives and score
-            score = (AppConfig.ENEMY_TANK_NUMBER - len(evil_spirits))*10
+            score = (AppConfig.EVIL_SPIRIT_NUMBER - len(evil_spirits))*10
 
             if pumpkin.state == AppConfig.INACTIVE:
                 player_lives -= 1

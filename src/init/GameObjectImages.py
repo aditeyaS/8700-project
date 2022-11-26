@@ -4,37 +4,37 @@ import const.app_config as AppConfig
 
 class GameObjectImages:
     def getBlue(self):
-        tank = {}
+        blue_evil_spirits = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "blue_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
-        return tank
+            blue_evil_spirits[d] = PhotoImage(file="../pic/devil/" + fileName)
+        return blue_evil_spirits
 
     def getBlack(self):
-        tank = {}
+        black_evil_spirits = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "black_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
-        return tank
+            black_evil_spirits[d] = PhotoImage(file="../pic/devil/" + fileName)
+        return black_evil_spirits
 
     def getRed(self):
-        tank = {}
+        red_evil_spirits = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "red_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/devil/" + fileName)
-        return tank
+            red_evil_spirits[d] = PhotoImage(file="../pic/devil/" + fileName)
+        return red_evil_spirits
 
     def getPlayer(self):
-        tank = {}
+        pumpkin = {}
         for d in AppConfig.DIRECTIONS:
             fileName = "pumpkin_" + d + ".gif"
-            tank[d] = PhotoImage(file="../pic/player/" + fileName)
-        return tank
+            pumpkin[d] = PhotoImage(file="../pic/player/" + fileName)
+        return pumpkin
 
     def getAll(self):
         game_object_images = {}
         game_object_images["blue"] = self.getBlue()
         game_object_images["black"] = self.getBlack()
         game_object_images["red"] = self.getRed()
-        game_object_images["huge"] = self.getPlayer()
+        game_object_images["pumpkin"] = self.getPlayer()
         return game_object_images

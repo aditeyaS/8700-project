@@ -36,5 +36,5 @@ class BulletImages:
         bullet_images["blue"] = self.getBlue()
         bullet_images["black"] = self.getBlack()
         bullet_images["red"] = self.getRed()
-        bullet_images["huge"] = self.getPlayer()
+        bullet_images["pumpkin"] = self.getPlayer()
         return bullet_images
