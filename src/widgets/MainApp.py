@@ -26,7 +26,7 @@ class MainApp(tk.Tk):
         self.geometry(f"{AppConfig.WINDOW_WIDTH}x{AppConfig.WINDOW_HEIGHT}")
         self.title(f"{AppConfig.GAME_NAME}")
         self.resizable(False, False)
-        icon = tk.PhotoImage(file="../img/icon.gif")
+        icon = tk.PhotoImage(file="../pic/icon.gif")
         self.iconphoto(False, icon)
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(0, weight=1)

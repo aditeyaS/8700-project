@@ -26,7 +26,7 @@ BULLET_SPEED: Final[int] = 100
 GAME_OBJECT_SPEED: Final[int] = 5
 
 # maximum player lives
-MAXIMUM_PLAYER_LIVES: Final[int] = 1
+MAXIMUM_PLAYER_LIVES: Final[int] = 3
 
 # status of objects
 ACTIVE: Final[str] = "ACTIVE"
