@@ -11,13 +11,13 @@ from db.LeaderboardDB import LeaderboardDB
 
 from widgets.MainApp import MainApp
 from widgets.PageFrame import PageFrame
-from widgets.TitleLabel import TitleLabel
-from widgets.CustomLabel import CustomLabel
 from widgets.CustomFrame import CustomFrame
 from widgets.CustomButtom import CustomButton
+from widgets.LabelFactory import LabelFactory
 
 window = MainApp()
 leaderboard_db = LeaderboardDB()
+label_factory = LabelFactory()
 
 game_state = AppConfig.STORY
 
@@ -42,30 +42,25 @@ while running:
         # frame for first page
         story_frame = PageFrame(window)
 
-        game_title_label = TitleLabel(story_frame, AppConfig.GAME_NAME)
+        game_title_label = label_factory.getLabel(AppConfig.LABEL_TITLE, story_frame, AppConfig.GAME_NAME)
 
         description_frame = Frame(story_frame, padx=20, pady=20, bg="#000000")
         description_frame.grid(row=1, column=0)
 
         line_1_text = "It's haloween and the good spirits are coming down to"
-        line1 = CustomLabel(description_frame, line_1_text)
-        line1.grid(row=0, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_1_text).grid(row=0, column=0)
 
         line_2_text = "give blessings to their loved ones. But the evil spirits"
-        line2 = CustomLabel(description_frame, line_2_text)
-        line2.grid(row=1, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_2_text).grid(row=1, column=0)
 
         line_3_text = "are stopping their way."
-        line3 = CustomLabel(description_frame, line_3_text)
-        line3.grid(row=2, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_3_text).grid(row=2, column=0)
 
         line_4_text = "Your mission is to destroy all the evil spirits"
-        line4 = CustomLabel(description_frame, line_4_text)
-        line4.grid(row=3, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_4_text).grid(row=3, column=0)
 
         line_5_text = "Best of Luck!"
-        line5 = CustomLabel(description_frame, line_5_text)
-        line5.grid(row=4, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_5_text).grid(row=4, column=0)
 
         username_input = Entry(story_frame, width=40, borderwidth=10, relief=FLAT)
         username_input.insert(0, "username")
@@ -89,8 +84,7 @@ while running:
         pg_frame = PageFrame(window)
         pg_frame.grid_rowconfigure(1, weight=1)
         
-        username_label = CustomLabel(pg_frame, username_input.get(), Colors.BABY_BLUE)
-        username_label.grid(row=0, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL,pg_frame, username_input.get(), Colors.BABY_BLUE).grid(row=0, column=0)
         
         pg_canvas = Canvas(pg_frame, width=AppConfig.PLAYGROUND_WIDTH, height=AppConfig.PLAYGROUND_HEIGHT)
         pg_canvas.grid(row=1, column=0)
@@ -101,10 +95,10 @@ while running:
         status_row.grid(row=2, column=0)
 
         current_lives_text = f"Lives: {AppConfig.MAXIMUM_PLAYER_LIVES}/{AppConfig.MAXIMUM_PLAYER_LIVES}"
-        lives_label = CustomLabel(status_row, current_lives_text, Colors.RED)
+        lives_label = label_factory.getLabel(AppConfig.LABEL_NORMAL,status_row, current_lives_text, Colors.RED)
         lives_label.grid(row=0, column=0, sticky=W+E)
 
-        score_label = CustomLabel(status_row, "Score: 0", Colors.GREEN)
+        score_label = label_factory.getLabel(AppConfig.LABEL_NORMAL,status_row, "Score: 0", Colors.GREEN)
         score_label.grid(row=0, column=1, sticky=W+E)
         
         from generate_evil_spirits import generate_evil_spirits
@@ -212,8 +206,7 @@ while running:
         leaderboard_top_5 = leaderboard_db.read_score()
         leaderboard_frame = PageFrame(window)
 
-        leader_board_title = TitleLabel(leaderboard_frame, "Leader Board")
-
+        label_factory.getLabel(AppConfig.LABEL_TITLE, leaderboard_frame, "Leader Board")
         
         if did_player_win:
             status_text = "You WIN!!"
@@ -235,12 +228,12 @@ while running:
         table_frame.grid_columnconfigure(0, weight=1)
         table_frame.grid_columnconfigure(1, weight=1)
 
-        CustomLabel(table_frame, text="Username").grid(row=0, column=0)
-        CustomLabel(table_frame, text="High Score").grid(row=0, column=1)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, table_frame, text="Username").grid(row=0, column=0)
+        label_factory.getLabel(AppConfig.LABEL_NORMAL, table_frame, text="High Score").grid(row=0, column=1)
 
         for _row in range(5):
             for _col in range(2):
-                CustomLabel(table_frame, text=leaderboard_top_5[_row][_col]).grid(row=1+_row, column=_col)
+                label_factory.getLabel(AppConfig.LABEL_NORMAL, table_frame, text=leaderboard_top_5[_row][_col]).grid(row=1+_row, column=_col)
 
         action_row = CustomFrame(leaderboard_frame)
         action_row.grid(row=3, column=0, padx=20, pady=20)

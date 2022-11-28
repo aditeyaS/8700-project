@@ -14,4 +14,3 @@ class CustomLabel(tk.Label):
             padx=20,
             pady=20,
         )
-        self.grid(row=0, column=0)

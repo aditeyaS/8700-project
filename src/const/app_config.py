@@ -39,3 +39,5 @@ BTN_START: Final[str] = "START"
 BTN_RESUME: Final[str] = "RESUME"
 BTN_EXIT: Final[str] = "EXIT"
 
+LABEL_NORMAL: Final[str] = "NORMAL"
+LABEL_TITLE: Final[str] = "TITLE"
