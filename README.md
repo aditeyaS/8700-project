@@ -30,6 +30,11 @@ Install linux requirements
   xargs sudo apt install < linux-requirements.txt
 ```
 
+Install python requirements
+```bash
+  pip3 install -r pip-requirements.txt
+```
+
 
 ## Run Locally
 
