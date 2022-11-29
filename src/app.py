@@ -47,16 +47,16 @@ while running:
         description_frame = Frame(story_frame, padx=20, pady=20, bg="#000000")
         description_frame.grid(row=1, column=0)
 
-        line_1_text = "It's haloween and the good spirits are coming down to"
+        line_1_text = "Oh NO! Evil Spirits have risen from the cemetery and"
         label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_1_text).grid(row=0, column=0)
 
-        line_2_text = "give blessings to their loved ones. But the evil spirits"
+        line_2_text = "invaded Clemson! You are our only hope! Cleanse the area"
         label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_2_text).grid(row=1, column=0)
 
-        line_3_text = "are stopping their way."
+        line_3_text = "with the help of your powerful pumpkin!"
         label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_3_text).grid(row=2, column=0)
 
-        line_4_text = "Your mission is to destroy all the evil spirits"
+        line_4_text = "The world's fate depends on you now!"
         label_factory.getLabel(AppConfig.LABEL_NORMAL, description_frame, line_4_text).grid(row=3, column=0)
 
         line_5_text = "Best of Luck!"
