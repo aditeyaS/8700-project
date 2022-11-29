@@ -11,12 +11,6 @@ class MainApp(tk.Tk):
             MainApp()
         return MainApp.__instance
 
-    def __init__(self):
-        if MainApp.__instance != None:
-            raise Exception("Singleton class")
-        else:
-            MainApp.__instance = self
-
     def __init__(self, *args, **kwargs):
         if MainApp.__instance != None:
             raise Exception("Singleton class")

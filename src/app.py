@@ -1,5 +1,6 @@
 from tkinter import Label, Frame, Entry, Canvas, PhotoImage, FLAT, W, E
 import time
+import pygame
 
 import const.app_config as AppConfig
 import const.colors as Colors
@@ -17,7 +18,21 @@ from widgets.LabelFactory import LabelFactory
 
 window = MainApp()
 leaderboard_db = LeaderboardDB()
+pygame.mixer.init()
 label_factory = LabelFactory()
+
+def play_theme():
+    pygame.mixer.music.load("../music/op.mp3")
+    pygame.mixer.music.play(loops=-1)
+
+def play_win():
+    pygame.mixer.music.load("../music/game_win.wav")
+    pygame.mixer.music.play(loops=0)
+
+def play_loose():
+    pygame.mixer.music.load("../music/game_loose.wav")
+    pygame.mixer.music.play(loops=0)
+
 
 game_state = AppConfig.STORY
 
@@ -33,9 +48,9 @@ def on_exit_click():
     global game_state
     game_state = AppConfig.EXIT
 
-
 running = True
 did_player_win = False
+play_theme()
 
 while running:
     if game_state == AppConfig.STORY:
@@ -212,9 +227,11 @@ while running:
         if did_player_win:
             status_text = "You WIN!!"
             status_color = Colors.GREEN
+            play_win()
         else:
             status_text = "You LOOSE!!"
             status_color = Colors.RED
+            play_loose()
 
         Label(
             leaderboard_frame,
