@@ -81,6 +81,7 @@ while running:
             continue
 
     elif game_state == AppConfig.PLAYGROUND:
+        # frame for second page
         pg_frame = PageFrame(window)
         pg_frame.grid_rowconfigure(1, weight=1)
         
