@@ -43,6 +43,7 @@ def on_start_click():
 def on_restart_click():
     global game_state
     game_state = AppConfig.STORY
+    play_theme()
 
 def on_exit_click():
     global game_state

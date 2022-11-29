@@ -10,7 +10,7 @@ Halloween Rescue is a python game which is the final project for the course Soft
 
 **Languages:** Python
 
-**Python Libraries:** Tkinter
+**Python Libraries:** Tkinter, pygame
 
 
 ## Installation
